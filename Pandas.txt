@@ -1,0 +1,36 @@
+[Data 처리 와 도구]
+ Excel(함수), Table(SQL), DataFrame(Python,R)
+
+ -> Data 저장(구조화)
+ -> Data 조회
+ -> Data 조작 
+ -> Data 시각화 (Excel, Power BI)
+
+DataFrame(Python) <== 파일(txt,csv,Excel),Table(Database),Web(HTML/Table)
+
+[Python 자료구조]
+ - 기본   : List[,,,], Dict {key:value}
+ - numpy  : 효율적인 연산, Array(Data 일관성)
+ - pandas : 2차원적 행/열 Data 구조 ==> DataFrame [Series,Series,,, ]
+					--> Index,column,value
+[Python Data 처리]
+ - 기본적인 문법(연산,제어,함수,클래스,정규표현식,예외처리), LC 형
+ - numpy 함수들
+ - database 연결 : sql 처리
+ - pandas : Index,column,value 함수, 연산, sql 처리/함수
+
+[통계적 지식] <-- [예측,검정] 엑셀, R, Python ,,, 
+ - 평균,합계,최소,최대,중앙값,최빈값,,,
+ - 표준편차, 분산
+ - 통계(인과관계, 상관관계, 검정) 
+ - 확률
+ - 미분,,,
+
+[Python Data 시각화]
+ - matplot : Pie, Histogram, Bar, 산포도, ,,, 
+ 
+
+
+
+
+ 

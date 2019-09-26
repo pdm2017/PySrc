@@ -1,0 +1,14 @@
+# IPython Notebook과 Jupyter Notebook
+
+IPython : 
+	- Interactive Python이라는 파이썬 인터프리터
+	- 기존 파이썬 인터프리터에 각종 편의기능을 추가한 버전
+	  --> (In [1]:처럼 나오는 것이 IPython의 프롬프트). 
+	- 여기에 노트북 기능을 붙여서 IPython Notebook이 나옴
+
+Jupyter : 
+	- 이후 버전이 올라가면서 이름이 바뀜
+	- 파이썬 이외의 다른 프로그래밍 언어(Ruby, R, JavaScript 등)도 지원
+	
+
+--> 그래서 최신 버전은 Jupyter Notebook이며 IPython Notebook은 따로 찾아서 설치하지 않음.

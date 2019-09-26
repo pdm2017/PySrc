@@ -1,0 +1,31 @@
+# Python 
+
+ 인터프리터 방식으로 진행되는
+ 기호와 함수 중심의 객체지향 언어
+
+ String s1 = new String()
+
+ s1 = Str()
+
+ 변수 = ~~~~~ 주소
+ 함수 = ~~~~~ 주소
+
+ 연산 ~~~, 
+ 제어 if ~ else, for, while , for in range(~~~)
+
+ 자료구조 [ 제어 for in if  ] <-- 간결성
+
+	-> [ 입력변수 if 입력 조건 for 추출변수 in 대상 if 추출조건 ] 
+ 
+  a = (true) if 입력 조건 else (false) 
+
+ type(), id() 
+ replace(), join(), split()
+
+ bool type 전환 7개 data => False : 0, '', [], (), {}, None, False
+
+ in, not in
+
+
+
+
