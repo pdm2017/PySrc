@@ -1,0 +1,277 @@
+Python Boot Camp
+
+1. 교육일시 : 2019-09-16 ~ 09-27
+2. 교육장소 : 한국HP교육센터
+3. 교육강사 : 홍성욱
+4. 교재
+   - 데이터 과학을 위한 파이썬 프로그래밍   최성철지음 (메인교재)
+   - 손에 잡히는 판다스
+   - 완친파 (완전 친절한 파이썬) 웹크롤러 대마왕편
+추천교재 : 입문부터 실무까지 끝내는 파이선 프로그래밍  해지연
+   
+5. 교육환경
+   - window 10
+   - PyCharm Professional 2019.2.2   
+
+=============================
+1일차 : 2019-09-16
+----------------------------------------------
+1. Python History
+   - c / Python / R / Java
+2. Why Python
+   - Data Handling에 특화
+3. Programming Logic이 필요함 
+   - 단순한 코딩이 아닌 Thinking 필요
+4. History of Data Handling
+   - 대표적사례 : 나이팅게일
+   - 목적의 명확화 -> 데이터의 수집 -> 시각화표현
+5. 모든 Language의 기본
+   - 저장 (데이터 자료형)
+   - 연산
+   - 제어
+   - 함수
+   - 예외처리
+   - Library
+   이중에 가장 기본적인 부분은 "저장"의 데이터 형태가 중요
+6. 주요 시퀀스 자료형
+   - List : 수정가능, 중복가능
+   - tuple : 수정불가, 중복가능
+   - Set : 수정가능, 중복불가
+   - Dictionary : Key-Value
+7. Python의 특징
+   - Platform Independent
+   - Interprinter
+   - Object Oriented Program
+   - Dynamic typing Language
+8. 다른언어와 가장 차이가 나는 개념은 변수와 상수, 메모리 Address의 개념
+   일반적으로 변수는 메모리 Address를 나타내어
+   a = 10, b = 10 이라고 하면, a와 b는 각각 다른 address이어야 하는데
+   Python의 경우는 같은 메모리 주소를 갖게 된다
+   메모리 주소의 확인은 id() 함수를 사용한다
+
+=============================
+2일차 : 2019-09-17
+-----------------------------
+1. 각언어의 특징과 활용성 그리고 Python의 미래
+2. 파이선만의 스타일
+   - 리스트 컴프리헨션
+     [   for 출력변수 in 대상 if  ]
+     [  조건 출력식  for 출력변수 in 대상 if 조건]
+3. * (가변리스트)  ** (가변 Dictionaly), 
+
+중요한것은 Python에 대해서 Python 스럽게 개발하는것 (다른 다른 사람의 소스코드를 이해할때 필요함)
+
+=============================
+3일차 : 2019-09-18
+----------------------------------------------
+p. 309 Chap 파이썬 스타일 코드II - 04 선형대수학
+1. Vector, Matrix (Python에는 Array가 없는데 numpy를 써야함)
+   - List/tuple/set/Dictionay -> Vector/Matrix -> Array/DataFrame 식으로 가야함
+   - Vector란 1차원 배열의 표현이며, Python에서는 시퀀스 자료형을 사용한다
+     (특히, zip 함수를 사용하면 매우 유용하게 사용이 가능하다)
+
+2. 데이터처리 3요소
+   - 목적
+   - 도구 (수집/정재/처리/가공/저장)
+   - 통계 (대수... 미분...등)
+
+3. 가변형 파라메터의 전달과 zip 함수의 처리
+   - add Matrix
+
+4. any(), all() 함수의 내용
+   any() 하나라도 true 인 경우 true
+   all() 모두 true 일경우는 true
+
+5. 행렬의 동치
+    me = [[2,5], [1,1]]
+    mf = [[2,5], [1,1]]
+    me와 mf가 같은지 다른지 확인
+    tmp2 = all([all([d1==d2 for d1, d2 in zip(*t)])  for t in zip(me, mf)])
+    print(tmp2)
+    -> 리스트 컴프리헨션 + zip 함수 + 가변배열 * + all함수의 이해
+
+6. list comprehention에서의 이중 for loop
+
+# 서점 => 책(제목, 저자, 가격)
+class Book:
+    # 멤버 생성자
+    def __init__(self):
+        self.title = '무제'  # 멤버 변수/속성
+        self.author = '미상'
+        self.price = 0
+    # 멤버 메소드
+    def pBook(self): print(self.title, self.author, self.price)
+
+     b1 = Book(); b1.pBook()
+
+        self.title, = args[0]
+        self.author = '미상'
+        self.price = 0
+7. Python의 메모리 관리 영역
+   - Static : 전체적인 공유 메모리 영역
+   - Class Member
+   - Instance Member
+   * 일반적인 자바의 2개 영역과 차렵화 된다. 자바의 경우 Heap과 Static 영역인데
+     파이썬의 경우는 3개 영역이다. (Class Member가 특이한것임)
+	 
+8. 그냥 재미있는 Case : 변수명에 "_" 붙는것은 일종의 Dummy 임
+    for _ in range(5) 와 같은 식으로도 사용이 가능함
+    __어쩌구__  앞의 __ 의미는 권한을 부여한다
+    뒤의 __ 두개는 public, 나머지는 private 를 의미한다
+9. class ClassName(상속받을 클래스명)
+   만일 상속받을 클래스명이 없으면 기본적으로 object이며 생략가능함
+   Python도 객체 지향 프로그램이므로 클래스를 선언하고, 클래스를 상속받을수 있다.
+   최상위 클래스는 Object 임.
+10. def __str__(self):
+    인스탄스변수명을 그냥 출력하는 경우 출력시킬 문자열을 정의한다
+	이런식으로 Object에서 생성된 Public Method의 Case가 많다.
+11. class 다중상속 가능
+    class MyClass(A, B, C) 이런식으로 
+12. import 로 사용될때의 __main__ 과 독립적으로 사용될때의 __main__ 차이
+13. 외부 라이브러리를 설치할 위치지정. 다음에서 출력되는 위치에 저장
+    import sys
+    for path in sys.path:
+        print(path)
+14. Folder 생성후 __init__.py 로 넣고 거기에 필요한 파일명을 list로 넣게 되면
+     from folder명 import * (전체를 수행할수 있다)
+     p.384
+	 
+=============================
+4일차 : 2019-09-19
+=============================
+1. Quiz : Dictionaly 항목이 상품:가격으로 되어 있을때, 상품을 입력하는 경우 가격의 합계 구하기
+2. try except 하기
+   rum time 오류에 대한 대응방법으로 try except 처리
+   보통 발생될수 있는 run time 오류대응
+   예 : 발생된 오류가 ZeroDivisionError 경우는
+   try:
+     오류가 발생되룻 있는 코드
+   except ExceptionClass as e:
+     print('나만의 메세지 만들기')
+	 print(e)    # 그냥 ㄷ 자체가 오류 메세지를 포함하고 있다
+   finally:
+     오류가 생기더라도 항상해야하는 코드를 넝어야 한다
+   기타 나머지에서 raise, asset라는 함수도 있음
+
+3. 파일처리방법의 기본 (Encoding)
+   - ANSI, UTF-8부터 확인을 해야한다 (코드는 OS의 존적임. 설치때무터 결정됨)
+   p.416 참조
+   파일의 종류는 binary, text형태로 구별할수 있음
+   - 한글의 경우는 조합형(ㄱ ㅏ ㅇ), 완성형 (강)
+   - Encoding종류 cp949(ANSI), utf-8 (최소 8bit에서 확정된다는 의미임)   
+   
+4. Python에서 file 처리방식 기본
+   - file 
+   - csv
+   - pandas
+
+5. 파일처리의 기본개념 : 열기, 처리(읽기,수정...), 닫기    
+                 Open, read(), write(), close()
+    Open(File, mode=, encoding=)
+    print(open.__doc__)	# 자세한것은 인터넷에서 뒤지면 됨
+    일반적으로 open... close()르 쓰는것보다 with 와 함게 사용하면 더 깔끔하게 보여진다. (close()를 사용하지 않아도 됨)
+	with open(arg... ) as my_file:
+	
+6. 좀더 고차원적인 log 처리 방법 (교재 : p449)
+   https://docs.python.org/ko/3/howto/logging.html#formatters 	
+	log범위
+	CRITICAL 50
+	ERROR    40
+	WARNING  30
+	INFO     20
+	DEBUG    10
+	NOTSET    0	
+	
+[기타참조] Python GUI 만들기 관련 라이브러리
+   Python GUI --> tkinter, wxPython,PyQt	
+   
+7. 중간결과의 저장 pickle
+   인스탄스된 결과를 파일로 영구저장하기 위함
+   하지만, 인스턴스된결과를 불러와서 사용하려면, 반드시 클래스 정의파일이 같이 필요하다   
+   
+8. CSV, XLS 파일의 처리
+   Pure Python으로 여러가지 작업을 수행하였으나, CSV 이렇게 처리하지 않는다.
+   대부분 Pandas 혹은 Spark DataFrame 객체의 다양한 기능 (메소드)를 사용하기 대문에
+   일반적으로 참고만 한다.
+   특히 엑셀의 경우 openpyxl 을 사용하고 있는데, 자사의 경우 DRM때문에 사용이 안된다.
+   차라리 win32 COM모델을 사용하여 엑셀을 직접열고 데이터를 처리하는 자사 특화 교육이 필요하다
+   (아뭏튼) DRM암호화가 안된 Excel에 대한 핸들링
+   from openpyxl import load_workbook
+   xlsx = load_workbook('./Excel/result.xlsx')
+   sheet = xlsx.active
+   rows = sheet['A2:B3']
+   cells = [cell.value for row in rows for cell in row]
+   
+9. 추가적으로 Python 3'rd Party Library 설치하는 방법
+   탐색기 : C:\Python\Python37\Lib\site-packages 이동
+   주소창에 cmd 입력하면 바로 그 디렉토리로 이동함
+   
+=============================
+5일차 : 2019-09-20
+=============================
+교육 Summary
+모든 Program의 기본 Frame
+  저장
+    상수/변수, Heap영역
+  Data Type
+    str, int, float, List, Set, Tuple, Dict...
+  연산
+    산술 연결 비교 논리 비트
+  제어
+    조건문 (if ~ else) 반복문 (for, while)
+  함수
+    이름, 입력 (, *, **), 반환, 처리
+  예외처리
+    try except else finally
+  RE
+    정규표현식 + * ... 기호
+  모듈
+    from ~ import
+  Library
+    Console : print(), input()
+	Disk : File, Directory
+	Database : SQL (DBMS)
+	Network : Socket (TCP/IP)
+	Web : THML/Java Script
+OOP의 기본
+  class
+    멤버속성/변수/메소드/생성자
+  메모리영역 :  Static	/ Class (Instance)
+  접근제한 (_, __)
+    상속, override, 추상class, lambda...
+	
+데이터처리 기본
+1) 수집 (File, DB, Web)
+2) 처리 (정제/가공) : Excel, Python (Numpy, pandas, Array, Series, DataFrame)
+3) 저장 : File, DBMS, Hadoop
+4) 시각화 : 태블로, PowerBI, matplot	
+5) 통계 (수학)
+   - 합계/평균/표준편차
+   - 회귀, 다중회귀
+   - ML, DL
+   
+1. 정규식표현
+   - index + slicing -> in
+   - 함수
+   - Re (정규표현식) : 암기해야한다   
+     (http://pythonstudy.xyz/python/article/401-%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D-Regex
+   - 결국은 수많은 Meta문자에 대해서 알고 있어야 한다
+   - 정규식표현과 사용되는 함수들 r.search()  r.match(), findall(), split(), sub()
+   
+2. numpy
+   ndarray의 특성과 성질
+   reshape
+   
+3. (6,) 의 심오한 의미
+   Tuple 임. 요소의 갯수는 6이지만 (6) 이라고 표현하면 Tuple이 아님 이를 Tule로 표현하기 위해 (6,) 으로
+   
+4. Array와 List
+   Array = [1 2 3 4 5]
+   List  = [1,2,3,4,5]    
+      
+5. Pandas 데이터의 아주 기초적인 작업
+   Series 로부터 시작하여 DataFrame 객체로 이동함	  
+   
+6. loc, iloc
+   Row단위로 데이터를 가져오는데 사용함
+   loc는 row 단위의 이름으로, iloc는 row 단위의 index 번호로 가져온다   

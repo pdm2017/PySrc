@@ -1,0 +1,156 @@
+Python Boot Camp  2 주차 강의
+
+=============================
+6일차 : 2019-09-23
+-----------------------------
+Excel(함수), Table(SQL), DataFrame(Python,R)
+ -> Data 저장(구조화)
+ -> Data 조회
+ -> Data 조작 
+ -> Data 시각화 (Excel, Power BI)
+
+DataFrame(Python) <== 파일(txt,csv,Excel),Table(Database),Web(HTML/Table)
+
+[Python 자료구조]
+ - 기본   : List[,,,], Dict {key:value}
+ - numpy  : 효율적인 연산, Array(Data 일관성)
+ - pandas : 2차원적 행/열 Data 구조 ==> DataFrame [Series,Series,,, ]
+					--> Index,column,value
+[Python Data 처리]
+ - 기본적인 문법(연산,제어,함수,클래스,정규표현식,예외처리), LC 형
+ - numpy 함수들
+ - database 연결 : sql 처리
+ - pandas : Index,column,value 함수, 연산, sql 처리/함수
+
+[통계적 지식] <-- [예측,검정] 엑셀, R, Python ,,, 
+ - 평균,합계,최소,최대,중앙값,최빈값,,,
+ - 표준편차, 분산
+ - 통계(인과관계, 상관관계, 검정) 
+ - 확률
+ - 미분,,,
+
+[Python Data 시각화]
+ - matplot : Pie, Histogram, Bar, 산포도, ,,, 
+
+1. Anoconda Package Install & 설명
+  - Jupyter Notebook의 이해 (설치위치등)
+  
+2. Pandas로 할수 있는일들.
+   - 기본적인 데이터 처리방법
+   - SQL, matplotlib (시각화처리)
+   
+3. pandas에 대한 데이터 접근방법 (결국은 cell단위 접근하려고함)
+   loc  row의 id방식으로 접근
+   iloc row의 index 방식으로 접근
+   dataFrame.loc[row, column]
+   
+4. panda 관련작업... 아주 기본적인 사항
+   - 기본적으로 load_csv 및 DB Query로 만든다
+
+5. Anaconda - Jupyter Notebook
+   - 데이터분석에 최적화된 REPL 형태
+   - 주요한 Hot Key
+     Ctrl + [ ]
+	 Shift / Ctrl / Alt + Enter 
+
+[참조]Kaggle Competition 등록방법
+1. 계정을 발급받는다.
+2. !pip install kaggle 한다
+   이렇게하면 C:\User\이름\.kaggle 폴더가 생길것이다.
+3. 오른쪽 상단에 가면 My Account가 있다.
+   거기에서 Create New API Token 버튼을 실행하면 Kaggle.json 파일이 생성된다
+   이를 C:\User\이름\.kaggle 디렉토리 아래에 복사해둔다
+4. 모델을 싱행하여 최종결과물 파일을 만든다 (csv)
+5. Command 명령어를 이용하여 다음을 실행한다
+   !kaggle competitions submit -c titanic -f submission.csv -m "Message"
+   
+[참조] File의 Encoding 읽이
+import chardet
+def find_encoding(fname):
+    r_file = open(fname, 'rb').read()
+    result = chardet.detect(r_file)
+    charenc = result['encoding']
+    return charenc   
+   
+=============================
+7일차 : 2019-09-24
+-----------------------------
+1. pandas 데이터에 대한 자유자재로 핸들링하기
+   - 행열 추가, 삭제, 변경
+   - 만일 자모른다면 help() 함수를 사용하면 된다
+   
+2. 기타 유용한 기능들
+   DataFrame.get_dtype_counts()   
+   DataFrame[ColumnName].value_counts(normalize=True)
+   DataFrame[ColumnName].unique()
+   DataFrame.nlargest(TopNumber, ColumnName)
+   
+3. missingvalue 채우기
+   Series.fillna
+   Series.interpolate    결측값을 그냥 보간법으로 채운다
+
+pandas 가 중요하지만, 실제로 배울때는 어떤 방법을 해야하나?
+기초부터 모든 기능을 하나하나 배운다는것은 매우 시간이 많이 걸린다.
+또한 그렇게 배운것은 모두 기억하기도 어렵다. 
+주요한 기능 (보통 많이 사용하는 기능)을 특정지어서 묶고, 핵심기능과 원리를 파악하고나면
+이후부터는 인터넷 검색등을 통해서 개인이 찾아서 실력을 갖추어야 한다.
+왜냐하면, Google에서 원하는 답을 빠르게 찾는것도 개발 실력이다.
+
+- Pandas Home : https://pandas.pydata.org/
+- Pandas Sheat Shteet : 이것 2장이면 된다.
+(추가적으로 조금은 어렵고 복잡한 예제는 DatetimeIndex (index 열에 있으며 시계열적 분석이 필요한 경우)
+
+주요 샘플 (DatetimeIndex, PeriodIndex, datetime64)
+idx_d = pd.Index(pd.date_range('20190101',periods=350)) 
+idx_d.freq
+dr3 = pd.date_range('2018-08-03', periods=24, freq='H')
+Y : Year, M: Month, W : Week, D: Day, h:Hour, m: Minute, s : Second
+ms :Millisecond, us : Microsecond, ns : Nanosecond, ps : Picosecond, fs : Femtosecond
+
+Ex) Excel 등에서 넘어온 string (Object형)에 대해서 datetime64로 변환하는 방법은?
+   
+===========================
+8일차 :
+===========================
+1. DB에 대한 실습방법은
+   sqllite3 프로그램을 사용하고, local에 hr.db 파일을 만들어서 DB로 사용한다
+   
+select 컬럼 
+from table 
+where 조건
+group by  -> aggregation function
+having
+order by
+조건의 방법
+0 : join 조건
+1 : Point 조건 =
+2 : 범위조건 >, >= , <, between and
+3 : 열거 조건 in (~, ~, ~)
+4 : 상태조건 is null
+5 : 패턴조건 like (%, _ )
+
+2개 테이블의 결합 : merge, join
+만일 공통 컬럼 K가 있다면 merge는 1개가 나오지만 join은 두개가 모두 나온다
+
+2. sort_values 라는 함수를 보면 parameter가 여러가지가 있다
+   by=
+   ascending=
+   na_position
+   
+3. matplotlib 의 문자열
+   gs : Green + Square
+   b^ : Blue + Triable
+   ro : Red + o   
+   
+4. matplot에서의 한글처리 방법 (3가지 방법이 있다)
+5. Matplotlib의 여러가지 플롯 방법 (흠... 그냥 인터넷 뒤지면 나오지 않을까?)
+   https://datascienceschool.net/view-notebook/6e71dbff254542d9b0a054a7c98b34ec/   
+
+[참고]   
+%matplotlib inline | qt
+%%writefile data1.txt   
+
+===========================
+9일차 :
+===========================
+1. Big Data의 개념 : 3V
